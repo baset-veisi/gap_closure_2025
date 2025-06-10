@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{gensymb}
+\usepackage{esvect}
+\usepackage[title]{appendix} % or other options
+\usepackage{graphicx} % Required for inserting images
+
+
+\title{Personal Solutions to Problem Sheet 1 QFT by David Tong}
+\author{Baset}
+\date{June 2025}
+
+\begin{document}
+
+\maketitle
+\section*{1.}
+According to Eq. (2),
+\begin{equation}
+    \begin{split}
+        \frac{\partial y}{\partial t} &= \sqrt{\frac{2}{a}}\sum_{n=1}^\infty \sin(\frac{n\pi x}{a})\dot{q}_n\\
+        \frac{\partial y}{\partial x} &= \sqrt{\frac{2}{a}}\sum_{n=1}^\infty \cos(\frac{n\pi x}{a})\frac{n\pi}{a}q_n
+    \end{split}
+\end{equation}
+implying (assuming the integrals are finite and convergent, $m,n > 0$):
+\begin{equation}
+    \begin{split}
+        L &= \int_0^a dx \left[\frac{\sigma}{2}\frac{2}{a}\left(\sum_{n=1}^\infty \sin\left(\frac{n\pi x}{a}\right)\dot{q}_n\right)^2 - \frac{T}{2}\frac{2}{a}\left(\sum_{n=1}^\infty \cos\left(\frac{n\pi x}{a}\right)\frac{n\pi}{a}q_n\right)^2 \right]\\
+          &=\frac{1}{a}\int_0^a dx\left[\sigma \sum_{m,n}\sin(\frac{n\pi}{a}x)\sin(\frac{m\pi}{a}x)\dot{q}_n\dot{q}_m-T\sum_{m,n}\cos(\frac{n\pi}{a}x)\cos(\frac{m\pi}{a}x)(\frac{\pi}{a})^2 \, mn\, q_nq_m  \right] \\
+          &= \frac{1}{a}\sum_{m,n}\int_0^a dx \left[\sigma \frac{\cos((m-n)\frac{\pi}{a}x)-\cos((m+n)\frac{\pi}{a}x)}{2}\dot{q}_n\dot{q}_m - T \frac{\cos((m-n)\frac{\pi}{a}x)+\cos((m+n)\frac{\pi}{a}x)}{2}\right.\\
+          &\left.\quad(\frac{\pi}{a})^2 \, mn\, q_nq_m \right] = \frac{1}{a}\sum_{m,n} \left[ \frac{\sigma}{2}\delta_{m,n}\dot{q}_n\dot{q}_m - (\frac{\pi}{a})^2 \delta_{m,n} \, mn\, q_nq_m \frac{T}{2} \right] \\
+          &= \sum_{n=1}^\infty \left[ \frac{\sigma}{2}\dot{q}_n^2 - \frac{T}{2}(\frac{n\pi}{a})^2 q_n^2  \right] = L(q_n,\dot{q}_n)  
+        \end{split}
+\end{equation}
+E-L equations imply:
+
+\begin{equation}
+    \begin{split}
+       & -\frac{\partial L}{\partial q_n} + \partial_\mu \frac{\partial L}{\partial_\mu(q_n)} = 0 \quad \equiv T(\frac{n\pi}{a})^2q_n + \sigma \ddot{q}_n = 0 \implies \\
+       & \ddot{q}_n + \frac{T}{\sigma}(\frac{n\pi}{a})^2 q_n = 0 \implies \omega_n^2 = \frac{T}{\sigma} (\frac{n\pi}{a})^2\\
+    \end{split}
+\end{equation}
+
+
+\end{document}
