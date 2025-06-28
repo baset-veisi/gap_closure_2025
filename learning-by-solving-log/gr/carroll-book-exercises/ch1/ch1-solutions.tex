@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{gensymb}
+\usepackage{esvect}
+\usepackage[title]{appendix} % or other options
+\usepackage{graphicx} % Required for inserting images
+
+
+\title{Personal solutions to GR book by Carroll chapter 1}
+\author{Baset}
+\date{June 2025}
+
+\begin{document}
+\author{Baset}
+\maketitle
+\section*{1.}
+Let the initial velocity of the particle with respect to the obesrver $S'$ be $u_0' \stackrel{S'}{\equiv} (u_0^{x'}, u_0^{y'})$.
+For simplicity, we assume that the collision happens at $t' = 0$. Moreover, we assume observers $S$ and $S'$ are aligned along the $x$-axis and that when $t'=0$ then 
+$t = 0$. Let at $t'=0$ the line that describes the mirror be $-x' = y'$. The line that describes the particle is $\frac{x'}{u_0^{x'}} = \frac{y'}{u_0^{y'}}$. For now, 
+$u_0^{x'}, u_0^{y'} \ne 0$. Now, we will find the angle between these two lines:
+\begin{equation}
+    \tan \theta' = |\frac{\tan{\frac{\pi}{4}} - \frac{u_0^{y'}}{u_0^{x'}}}{1 + \tan{\frac{\pi}{4}} \frac{u_0^{y'}}{u_0^{x'}}}| = |\frac{1 - \frac{u_0^{y'}}{u_0^{x'}}}{1 + \frac{u_0^{y'}}{u_0^{x'}}} |
+\end{equation}
+We let the $u_0^{y'} = u_0^{x'}\tan{\alpha'} = u_0^{x}\tan{\alpha'}$. Then, we have that:
+\begin{equation}
+    \tan \theta' = |\frac{1 - \tan{\alpha'}}{1 + \tan{\alpha'}}|
+\end{equation}
+But in the frame $S$, we have that the $u_0^{y} = \frac{u_0^{y'}+v}{1+u_0^{y'}v}$. Also, the mirror's coordinates in $S$ are:
+\begin{equation}
+    y = \gamma(y' + vt') = \gamma y'|_{t'=0}
+\end{equation}
+Therefore, w.r.t. to $S$ at $t=0$ the mirror is $y = -\frac{x}{\gamma}$. The particle's coordinates in $S$ are $y = 
+\frac{u_0^{y'}+v}{(1+u_0^{y'}v)u_0^{x}}x$. Therefore, the angle between the particle and the mirror is:
+\begin{equation}
+    \tan \theta = |\frac{\gamma - \frac{u_0^{y'}+v}{(1+u_0^{y'}v)u_0^{x}}}{1 + \gamma \frac{u_0^{y'}+v}{(1+u_0^{y'}v)u_0^{x}}}| \implies
+    \tan \theta = |\frac{\gamma - \frac{\tan{\alpha'}+ v/u_0^{x}}{1+\tan{\alpha'}u_0^{x}v}}{1 + \gamma \frac{\tan{\alpha'}+ v/u_0^{x}}{1+\tan{\alpha'}u_0^{x}v}}|
+\end{equation}
+
+
+
+
+\end{document}
