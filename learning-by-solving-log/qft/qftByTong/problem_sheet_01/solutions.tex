@@ -8,6 +8,25 @@
 \usepackage[title]{appendix} % or other options
 \usepackage{graphicx} % Required for inserting images
 
+% Custom commands for partial derivatives
+\newcommand{\pd}{\partial}  % Short for \partial
+\newcommand{\pdm}{\partial_\mu}  % \partial_\mu
+\newcommand{\pdn}{\partial_\nu}  % \partial_\nu
+\newcommand{\pdup}{\partial^\mu}  % \partial^\mu
+\newcommand{\pdupnu}{\partial^\nu}  % \partial^\nu
+\newcommand{\Lag}{\mathcal{L}}  % Lagrangian shorthand
+
+% Alternative shorter versions
+\newcommand{\dmu}{\partial_\mu}
+\newcommand{\dnu}{\partial_\nu}
+\newcommand{\dmuup}{\partial^\mu}
+\newcommand{\dnuup}{\partial^\nu}
+
+% Even shorter versions (if you prefer)
+\newcommand{\dm}{\partial_\mu}
+\newcommand{\dn}{\partial_\nu}
+\newcommand{\dmuu}{\partial^\mu}
+\newcommand{\dnuu}{\partial^\nu}
 
 \title{Personal Solutions to Problem Sheet 1 QFT by David Tong}
 \author{Baset}
@@ -39,7 +58,7 @@ E-L equations imply:
 \begin{equation}
     \begin{split}
        & -\frac{\partial L}{\partial q_n} + \partial_\mu \frac{\partial L}{\partial_\mu(q_n)} = 0 \quad \equiv T(\frac{n\pi}{a})^2q_n + \sigma \ddot{q}_n = 0 \implies \\
-       & \ddot{q}_n + \frac{T}{\sigma}(\frac{n\pi}{a})^2 q_n = 0 \implies \omega_n^2 = \frac{T}{\sigma} (\frac{n\pi}{a})^2\\
+       & \ddot{q}_n + \frac{T}{\sigma}(\frac{n\pi}{a})^2 q_n = 0 \implies \omega_n = \sqrt{\frac{T}{\sigma}} (\frac{n\pi}{a})\\
     \end{split}
 \end{equation}
 
@@ -49,5 +68,28 @@ According to the notation in the notes $\phi'(x) = \phi(y)$, implying
 \begin{equation}
     y^\nu = (\Lambda^{-1})_\mu^\nu x^\mu \implies \frac{\partial y^\nu}{\partial x^\mu} = (\Lambda^{-1})_\mu^\nu
 \end{equation}
-The KG in the notes is $$
+The KG in the notes is $\partial_\mu \partial^\mu \phi(x) + m^2 \phi(x) = 0$, the KG in the new 
+coordinate system:
+\begin{equation}
+    \begin{split}
+       \text{KG}': &(\Lambda^{-1})^\mu_\nu \partial_\mu (\Lambda^{-1})_\mu^\nu \partial^\mu \phi(y) + m^2 \phi(y) = 0\\
+        & \equiv \partial_\nu \partial^\nu \phi(y) + m^2\phi(y) = 0  
+    \end{split}
+\end{equation}
+
+\section*{3.}
+E-L equations:
+\begin{equation}
+    \begin{cases}
+         \text{Eq1: }& \pdm \frac{\pd \Lag}{\pd (\pdm \psi^*)} - \frac{\pd \Lag}{\pd \psi^*} = 0\\
+         \text{Eq2: }& \pdm \frac{\pd \Lag}{\pd (\pdm \psi)} - \frac{\pd \Lag}{\pd \psi} = 0
+    \end{cases}
+    \implies 
+    \begin{cases}
+        \text{- }& \pdm \pdup \psi + m^2 \psi + \lambda \psi^*\psi^2 = 0 \\
+        \text{- }& \pdm \pdup \psi^* + m^2 \psi^* + \lambda \psi(\psi^*)^2 = 0 
+    \end{cases}
+\end{equation}
+The invariance part:
+
 \end{document}
