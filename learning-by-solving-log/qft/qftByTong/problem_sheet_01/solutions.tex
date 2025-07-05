@@ -166,4 +166,78 @@ Hence:
     \end{split}
 \end{equation}
 We have used the symmetric, anti-symmetric point several times in the above derivation.
+
+
+\section*{5.}
+- The first result is:
+\begin{equation}
+    \begin{split}
+    \eta_{\sigma\tau}x'^\sigma x'^{\tau} & = \eta_{\sigma\tau}\Lambda_\mu^\sigma \, x^\mu \Lambda^\tau_\nu \, x^\nu = \eta_{\mu\nu}x^\mu x^\nu \implies \\
+    \eta_{\mu\nu} & = \eta_{\sigma\tau}\Lambda_\mu^\sigma \Lambda^\tau_\nu
+    \end{split}
+\end{equation}
+
+For any transformation to be Lorentz, it must satisfy Eq.(16):
+\begin{equation}
+    \begin{split}
+        \eta_{\mu\nu} & = \eta_{\sigma\tau}(\delta^\sigma_\mu + \omega^\sigma_\mu)(\delta^\tau_\nu + \omega^\tau_\nu)\\
+        \eta_{\mu\nu} & = \eta_{\mu\nu} + \eta_{\mu\tau} \omega^\tau_\nu + \eta_{\sigma\nu}\omega^\sigma_\mu + \eta_{\sigma\tau}\omega^\sigma_\mu\omega^\tau_\nu \\
+        & \simeq \eta_{\mu\nu} + (\omega_{\mu\nu} + \omega_{\nu\mu}) 
+    \end{split}
+\end{equation}
+Hence:
+\begin{equation}
+    \omega^{\mu\nu} = - \omega^{\nu\mu}
+\end{equation}
+A pure rotation:
+\begin{equation}
+    \begin{split}
+    R(\theta) & = \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & \cos{\theta} & -\sin{\theta} & 0 \\
+            0 & \sin{\theta} & \cos{\theta} & 0 \\ 
+            0 & 0 & 0 & -1
+                \end{bmatrix} \\
+    & \simeq \begin{bmatrix}
+            1  & 0 & 0 & 0 \\
+            0  & 1 & -\theta & 0\\
+            0 & \theta & 1 & 0 \\
+            0 & 0 & 0 & 1  
+            \end{bmatrix} = [\delta] + \begin{bmatrix}
+                0  & 0 & 0 & 0 \\
+                0  & 0 & \theta & 0\\
+                0 & -\theta & 0 & 0\\
+                0 & 0 & 0 & 0
+            \end{bmatrix}
+    \end{split}
+\end{equation}
+Anti-symmetric as one can see for $\theta \ll 1$ infinitesimally small.
+In cas of the boost:
+\begin{equation}
+    \begin{split}
+        \Lambda(v) & = \begin{bmatrix}
+                \gamma & -\gamma v & 0 & 0\\
+                -\gamma v & \gamma & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1
+                        \end{bmatrix}
+    \end{split}
+\end{equation}
+$\gamma(v) \simeq 1 + \onehalf v^2 \implies $
+\begin{equation}
+    \begin{split}
+        \Lambda(v) & \simeq \begin{bmatrix}
+             1 & - v & 0 & 0\\
+                -v & 1 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & 1
+                        \end{bmatrix} = [\delta] + \begin{bmatrix}
+                            0 & - v & 0 & 0\\
+                               -v & 0 & 0 & 0 \\
+                               0 & 0 & 0 & 0 \\
+                               0 & 0 & 0 & 0
+                                       \end{bmatrix}
+    \end{split}
+\end{equation}
+Again anti-symmetric.
 \end{document}
