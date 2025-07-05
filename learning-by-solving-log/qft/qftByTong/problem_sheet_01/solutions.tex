@@ -15,6 +15,7 @@
 \newcommand{\pdup}{\partial^\mu}  % \partial^\mu
 \newcommand{\pdupnu}{\partial^\nu}  % \partial^\nu
 \newcommand{\Lag}{\mathcal{L}}  % Lagrangian shorthand
+\newcommand{\onehalf}{\frac{1}{2}}
 
 % Alternative shorter versions
 \newcommand{\dmu}{\partial_\mu}
@@ -90,6 +91,79 @@ E-L equations:
         \text{- }& \pdm \pdup \psi^* + m^2 \psi^* + \lambda \psi(\psi^*)^2 = 0 
     \end{cases}
 \end{equation}
-The invariance part:
+The invariance part and the changed Lagrangian up to the first order:
+\begin{equation}
+    \begin{split}
+    \Lag' & \simeq \pdm (\psi^* -i\alpha\psi^*) \pdup (\psi + i\alpha\psi)-m^2\psi^*\psi -\frac{\lambda}{2}(\psi^*\psi)^2 \\
+        & \simeq \pdm\psi^* \pdup\psi -m^2\psi^*\psi -\frac{\lambda}{2}(\psi^*\psi)^2 = \Lag
+    \end{split} 
+\end{equation}
+therefore, the conserved current is:
+\begin{equation}
+    \begin{split}
+    j^\mu = &\frac{\pd \Lag }{\pd (\pdm\phi_a)}X_a(\phi) = i\alpha\psi\pdup\psi^* - i\alpha\psi^*\pdup\psi \\
+    & \equiv i(\psi\pdup\psi^* - \psi^*\pdup\psi)
+    \end{split}
+\end{equation}
+We calculate explicitly $\pdm j^\mu$ and use the E-L:
+\begin{equation}
+    \begin{split}
+        \pdm j^\mu & = i\left[ \pdm\psi\pdup\psi^* + \psi\pdm\pdup\psi^* - \pdm\psi^* \pdup\psi - \psi^* \pdm\pdup\psi \right]\\
+        & = i\left[ -\psi\left(m^2\psi^* + \lambda\psi (\psi^*)^2 \right) + \psi^*(m^2\psi + \lambda\psi^*\psi^2) \right] \\
+        & = 0
+    \end{split}
+\end{equation}
+QED.
 
+\section*{4.}
+\begin{equation}
+    \Lag = \onehalf\pdm \phi_a \pdup \phi_a - \onehalf m^2 \phi_a\phi_a \implies 
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \Lag' & \simeq \onehalf\pdm(\phi_a + \theta\epsilon_{abc}n_b\phi_c)\pdup (\phi_a + \theta\epsilon_{abc}n_b\phi_c)-
+        \onehalf m^2 (\phi_a\phi_a - 2\theta \epsilon_{bac}\phi_a\phi_c)\\
+        & \simeq \onehalf \{\pdm \phi_a \pdup\phi_a + \theta n_b \left[\epsilon_{abc}\pdm\phi_c \pdup\phi_a 
+        + \epsilon_{abc}\pdup\phi_c \pdm\phi_a  \right]  \} - \onehalf m^2 \phi_a\phi_a \\
+        & = \onehalf\pdm \phi_a \pdup \phi_a - \onehalf m^2 \phi_a\phi_a = \Lag
+    \end{split}
+\end{equation}
+We used the fact that $\epsilon_{abc}$ tensor is anti-symmetric, but $\pdm\phi_c \pdup\phi_a$ is symmetric w.r.t
+changing the indices $a$ and $c$. The same goes for $\phi_a\phi_c$.
+
+Computing the Noether current:
+\begin{equation}
+    \begin{split}
+        j^\mu & = \frac{\pd\Lag}{\pd(\pdm \phi_a)}X_a(\phi) \\
+        & = \pdup\phi_a \, \epsilon_{abc}n_b\phi_c \implies \\
+        Q & = \int d^3x \, \epsilon_{abc} \dot{\phi_a} n_b \phi_c \\
+        & =  n_b \int d^3x \,\epsilon_{bca} \dot{\phi_a} \phi_c \\ 
+        & = n_b \int d^3x \, \epsilon_{bac} \dot{\phi_c} \phi_a = n_a \int d^3x \, 
+        \epsilon_{abc} \dot{\phi_b} \phi_c 
+    \end{split}
+\end{equation}
+We can choose $n_a = (1,0,0)$, then for each choice:
+\begin{equation}
+    Q_a = \int d^3x \, 
+    \epsilon_{abc} \dot{\phi_b} \phi_c 
+\end{equation}
+Direct confirmation:
+\begin{equation}
+    \begin{split}
+        \Lag & = \onehalf\pd_t\phi_a\pd_t\phi_a - \onehalf\nabla \phi_a\nabla\phi_a-\onehalf m^2\phi_a\phi_a \implies \\
+        \text{E-L for each $a$: } & \pd_t^2 \phi_a - \nabla^2\phi_a + m^2\phi_a = 0 
+    \end{split}
+\end{equation} 
+Hence:
+\begin{equation}
+    \begin{split}
+        \frac{d \, Q_a}{dt} & = \int d^3x \, \epsilon_{abc}\ddot{\phi_a}\phi_c + \int  
+        d^3x \, \epsilon_{abc}\dot{\phi_a}\dot{\phi_c}  \\
+        & = \int d^3x \, \epsilon_{abc}(\nabla^2 \phi_a - m^2\phi_a)\phi_c = 
+         \int d^3x \, \epsilon_{abc} \nabla^2 \phi_a \, \phi_c \\
+         & = - \int d^3x \, \epsilon_{abc} \nabla\phi_a.\nabla\phi_c = 0
+    \end{split}
+\end{equation}
+We have used the symmetric, anti-symmetric point several times in the above derivation.
 \end{document}
