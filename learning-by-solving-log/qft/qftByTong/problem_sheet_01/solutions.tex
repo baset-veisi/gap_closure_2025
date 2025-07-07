@@ -285,4 +285,63 @@ that the center of energy's velocity is constant, or just the momentum we have d
 translation invariant systems must be preserved.
 
 \section*{7.}
+For the first part we only prove that the $F_{\mu\nu}$ tensor is invariant under the Guage the transformation
+introduced here:
+\begin{equation}
+    \begin{split}
+        F'_{\mu\nu} & = (\pdm A'_\nu - \pdn A'_\mu) = \pdm A_\nu - \pdn A_\mu + \pdn \pdm \xi - \pdm\pdn \xi = F_{\mu\nu}
+    \end{split}
+\end{equation}
+Therefore the Lagrangian does not change under Guage transformation.
+
+For the translation trans formation we follow the note's explanation for deriving the energy-momentum tensor,
+$x^\nu \xrightarrow{} x^\nu - \epsilon^\nu$, hence: $A_\nu \xrightarrow{} A_\nu + \epsilon^\mu \pdm A_\nu $,
+ therefore the energy-momentum tensor is:
+ \begin{equation}
+    \begin{split}
+        T^\mu_\nu &= \frac{\pd\Lag}{\pd (\pdm A_\rho)}\pdn A_\rho - \delta^\mu_\nu \Lag = -F^{\mu\rho}\pdn A_\rho - \delta^\mu_\nu \Lag \implies \\
+        T^{\mu\nu} & = -F^{\mu\rho}\pdupnu A_\rho - \eta^{\mu\nu}\Lag
+    \end{split}
+ \end{equation}
+All the terms above except for $\pdupnu A_\rho$ are Guage invariant. But, obviously the term mentioned isn't and therefore
+the obtained $T^{\mu\nu}$ can not be Guage invariant. Moreover, the excluding the Lagrangian term of the 
+energy-momentum tensor, it can not be symmetric w.r.t. $\mu$ and $\nu$, one can easily compute $(0,1)$ term and 
+$(1,0)$ term to see the tensor not being symmetric.
+Now we investigate the proposed tensor:
+\begin{equation}
+    \Theta^{\mu\nu} = T^{\mu\nu}-F^{\rho\mu}\pd_{\rho}A^\nu
+\end{equation}
+Using Eq.(30):
+\begin{equation}
+    \begin{split}
+        \Theta^{\mu\nu} &= -F^{\mu\rho}\pdupnu A_\rho - \eta^{\mu\nu}\Lag + F^{\mu\rho}\pd_\rho A^\nu \\
+        & = F^{\mu\rho}(\pd_\rho A^\nu - \pdupnu A_\rho) - \eta^{\mu\nu}\Lag \\
+        & = F^{\mu\rho}\eta^{\nu\sigma}(\pd_\rho A_\sigma - \pd_\sigma A_\rho) - \eta^{\mu\nu}\Lag \\
+        & = F^{\mu\rho}F_{\rho\sigma}\eta^{\nu\sigma} - \eta^{\mu\nu}\Lag 
+    \end{split}
+\end{equation}
+Before confirming the conserved currents we see that it is completely Guage invariant and also Symmetric.
+
+The E-L equations according to the Lagrangian are: $\pdm F^{\mu\nu} = 0$, for the currents:
+\begin{equation}
+    \begin{split}
+        \pdm \Theta^{\mu\nu} & = \eta^{\sigma\nu}F_{\rho\sigma}\pdm F^{\mu\rho} + \eta^{\sigma\nu}F^{\mu\rho}\pdm F_{\rho\sigma}+\frac{1}{2}\eta^{\mu\nu}F^{\rho\sigma}\pdm F_{\rho\sigma}\\
+        & = \{ \text{$\mu \leftrightarrow \sigma $}\}= 0 + \eta^{\mu\nu}F^{\sigma\rho}\pd_\sigma F_{\rho\mu} + \onehalf 
+        \eta^{\mu\nu}F^{\rho\sigma}\pdm F_{\rho\sigma} \\
+        & = \eta^{\mu\nu}F^{\sigma\rho} \left\{\pd_\sigma F_{\rho\mu} - \onehalf \pdm F_{\rho\sigma} \right\} \\
+        & = \eta^{\mu\nu}F^{\sigma\rho} \left\{A_{\mu,\rho\sigma} - A_{\rho,\mu\sigma} - \onehalf A_{\sigma,\rho\mu} + \onehalf A_{\rho,\sigma\mu}  \right\} \\
+        & = \onehalf \eta^{\mu\nu}F^{\sigma\rho} \left\{ A_{\mu,\rho\sigma} - A_{\rho,\mu\sigma} +  A_{\mu,\rho\sigma} - A_{\sigma,\rho\mu} \right\} \\
+        & = \onehalf \eta^{\mu\nu}F^{\sigma\rho} \left\{ \pd_\sigma F_{\rho\mu} - \pd_\rho F_{\mu\sigma} \right\} = -
+        \onehalf \eta^{\mu\nu} \left\{ F^{\sigma\rho}\pd_{\sigma}F_{\mu\rho} + F^{\sigma\rho}\pd_{\rho}F_{\mu\sigma} \right\}\\
+        & = -\onehalf \eta^{\mu\nu} \left\{ F^{\sigma\rho} \pd_{\rho} F_{\mu\sigma} - F^{\rho\sigma}\pd_\sigma F_{\mu\rho}  \right\} = \{ \text{$\rho \leftrightarrow \sigma $}\}= \\
+        & = -\onehalf \eta^{\mu\nu} \left\{ 0 \right\} = 0
+    \end{split}
+\end{equation}
+Therefore this also defines four conserved currents. For the traceless proof:
+\begin{equation}
+    \Theta^\mu_\mu = -F^{\mu\rho}F_{\mu\rho} - \eta^{\mu}_\mu \Lag = 4\Lag - 4\Lag = 0
+\end{equation}
+
+\section*{8.}
+
 \end{document}
