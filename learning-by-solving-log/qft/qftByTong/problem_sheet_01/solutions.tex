@@ -196,7 +196,7 @@ A pure rotation:
             1 & 0 & 0 & 0 \\
             0 & \cos{\theta} & -\sin{\theta} & 0 \\
             0 & \sin{\theta} & \cos{\theta} & 0 \\ 
-            0 & 0 & 0 & -1
+            0 & 0 & 0 & 1
                 \end{bmatrix} \\
     & \simeq \begin{bmatrix}
             1  & 0 & 0 & 0 \\
@@ -239,5 +239,50 @@ $\gamma(v) \simeq 1 + \onehalf v^2 \implies $
                                        \end{bmatrix}
     \end{split}
 \end{equation}
-Again anti-symmetric.
+Which will be antisymmetric after we lower the index using Minkowski metric.
+\section*{6.}
+\begin{equation}
+    \phi(x) \xrightarrow{} \phi'(x') = \phi(x^\mu - \omega^\mu_\nu x^\nu) \simeq \phi(x) - \omega^\mu_\nu x^\nu \pdm \phi
+\end{equation}
+Therefore:
+\begin{equation}
+    \Lag'(\phi') = \Lag(\phi-\omega^\mu_\nu x^\nu \pdm \phi) \implies \delta\Lag = -\omega^\mu_\nu x^\nu \pdm \Lag 
+\end{equation}
+Which because $\omega$ is infinitesimal and antisymmetric:
+\begin{equation}
+    \delta\Lag = - \pdm (\omega^\mu_\nu x^\nu \Lag)
+\end{equation}
+Using Noether's theorem:
+\begin{equation}
+    \begin{split}
+        j^\mu &= -\frac{\pd\Lag}{\pd (\pdm \phi)}\omega^\rho_\nu x^\nu \pd_{\rho} \phi + \omega^\mu_\nu x^\nu \Lag \\
+        & = -\omega^\rho_\nu \left[ \frac{\pd\Lag}{\pd (\pdm \phi)} x^\nu \pd_{\rho} \phi - \delta^\mu_\rho\Lag x^\nu \right]\\
+        & = -\omega^\rho_\nu \left[ T_\rho^\mu x^\nu \right]
+    \end{split}
+\end{equation}
+Accordingly, looking at Eq. (19), for arbitrary $j\ne k$, $\omega_{jk}=-\omega_{kj}$, hence:
+\begin{equation}
+    \begin{split}
+        Q &= -\int d^3x \, T^{\rho 0}\omega_{\rho\nu}x^\nu = -\int d^3x \, (T^{j 0}\omega_{jk}x^k -T^{k0} \omega_{jk}x^j) \\
+    \end{split}
+\end{equation}
+We can write the above equation for three pairs, and also we have a freedome in choosing $\omega_{jk}=\pm 1$, therefore 
+using Levi-Civita symbol:
+\begin{equation}
+    Q_i = \epsilon_{ijk} \int d^3x \, (x^jT^{0k} - x^kT^{0j})
+\end{equation}
+Which is just the Angular momentum.
+The other one resulting from the Lorentz Boosts is:
+\begin{equation}
+    \begin{split}
+        Q &= \int d^3x (x^iT^{00} - x^0T^{0i}) \implies \frac{d\,Q}{dt} = 0 \implies \\
+        & \frac{d}{dt}\int d^3x \, x^iT^{00} = \int d^3x \, T^{0i}  = P^i
+    \end{split}
+\end{equation}
+My own first impression was that this is sort of a restatement of Newton's law and sort of restatement
+for what momentum is, but a more precise answer in the book correctly says that this equation states 
+that the center of energy's velocity is constant, or just the momentum we have defined which in 
+translation invariant systems must be preserved.
+
+\section*{7.}
 \end{document}
