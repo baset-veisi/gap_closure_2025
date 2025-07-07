@@ -343,5 +343,40 @@ Therefore this also defines four conserved currents. For the traceless proof:
 \end{equation}
 
 \section*{8.}
-
+We use the $E-L$ equation for fields:
+\begin{equation}
+    \begin{split}
+        0 &= -\pdm \frac{\pd\Lag}{\pd(\pdm C_\nu)} + \frac{\pd\Lag}{\pd C_\nu} = \pdm F^{\mu\nu} + m^2C^\nu \\
+        & = (\pdm\pdup + m^2)C^\nu - \pdupnu \pdm C^\mu   
+    \end{split}
+\end{equation}
+We have:
+\begin{equation}
+    \begin{split}
+        m^2C^\nu &= \pdupnu \pdm C^\mu - \pdm\pdup C^\nu \implies m^2 \pdn C^\nu = \pdn\pdupnu\pdm C^\mu - 
+        \pdm\pdup\pdn C^\nu = 0 \\
+        & \implies m^2 \pdm C^\mu = 0 \xrightarrow{m \ne 0} \pdm C^\mu = 0
+    \end{split}
+\end{equation}
+This, by itself helps to write one of the components based on the other (E-L, $\nu = 0$):
+\begin{equation}
+    \begin{split}
+       & \pd_t^2 C^0 + (m^2 + \pd_i\pd^i)C^0 - \pd_t^2 C^0 - \pd^i \dot{C}_i = 0 \implies \\
+       & (m^2 + \pd_i\pd^i)C^0 =  \pd^i \dot{C}_i
+    \end{split}
+\end{equation}
+By definition:
+\begin{equation}
+    \begin{split}
+        \Pi^i &= \frac{\pd \Lag}{\pd \dot{C}_i} = -F^{0i} \implies \Pi^0 = -F^{00} = 0 
+    \end{split}
+\end{equation}
+Then the Hamiltonian density:
+\begin{equation}
+    \begin{split}
+        \mathcal{H} & = \Pi^i \dot{C}_i - \Lag = \Pi^i(F_{0i}+\pd_iC_0)-\Lag = -\Pi^i\Pi_i + \Pi^i\pd_iC_0 + \onehalf \Pi^i\Pi_i + \onehalf F^{ij}F_{ij}\\
+        &-\onehalf m^2 C_0C^0 - \onehalf m^2 C_iC^i \implies \\
+        \mathcal{H} & = \onehalf(\Pi_i)^2 - \Pi_i\pd_iC_0 + \onehalf F^{ij}F_{ij} - \onehalf m^2 C_0^2 + \onehalf m^2 C_i^2
+    \end{split}
+\end{equation}
 \end{document}
