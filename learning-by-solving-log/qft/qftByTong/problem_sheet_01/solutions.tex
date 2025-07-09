@@ -379,4 +379,48 @@ Then the Hamiltonian density:
         \mathcal{H} & = \onehalf(\Pi_i)^2 - \Pi_i\pd_iC_0 + \onehalf F^{ij}F_{ij} - \onehalf m^2 C_0^2 + \onehalf m^2 C_i^2
     \end{split}
 \end{equation}
+
+\section*{9.}
+We solve for general $n+1$-dimensional spacetime. The action in the new
+scaled coordinate systems is:
+\begin{equation}
+    \begin{split}
+        S &= \int \frac{d^4y}{\lambda^{n+1}}\left[ \lambda^{2(D+1)}\onehalf \pdm\phi\pdup\phi - (\lambda)^{2D}\onehalf m^2\phi^2 - (\lambda)^{pD}g\phi^p  \right]
+    \end{split}
+\end{equation}
+For the kinetic part:
+\begin{equation}
+    \begin{split}
+        & 2(D+1)-(n+1) = 0 \implies D(n) = \frac{n+1}{2} - 1 \implies D(3) = 1\\
+    \end{split}
+\end{equation}
+In th special case where $p=2$, one can remove the effect of the added 
+terms with $-2g = m^2$, but apart from this specific case, for the massive
+term to be scale invariant:
+\begin{equation}
+    \begin{split}
+        2D - (n+1) = 0 \implies D(n) = \frac{n+1}{2} 
+    \end{split}
+\end{equation}
+Therefore, if the kinetic term is going to be scale-invariant then $m=0$. Finally:
+\begin{equation}
+    \begin{split}
+        pD(n) - (n+1) = (\frac{p}{2}-1)(n+1)-p = 0 \implies p(n) = \frac{2(n+1)}{n-1} \implies p(3) = 4
+    \end{split}
+\end{equation}
+For $n=3$, we have that:
+\begin{equation}
+    \begin{split}
+        D^\mu &= \frac{\pd \Lag }{\pd (\pdm \phi)} - F^\mu\\
+        &= -\pdup\phi(x^\nu\pdn+1)\phi + \Lag x^\mu
+    \end{split}
+\end{equation}
+As for a continuous slight scaling $\lambda = 1+\epsilon$:
+\begin{equation}
+    \begin{split}
+        \delta x^\mu &= \epsilon x^\mu \\
+        \delta\phi &= (1-\epsilon)(\phi - \epsilon x^\nu \pdn \phi) - \phi = -\epsilon(x^\nu \pdn+1)\phi \\
+        \delta \Lag & =-\epsilon\pdm(x^\mu\Lag)
+    \end{split}
+\end{equation}
 \end{document}
