@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{gensymb}
+\usepackage{esvect}
+\usepackage[title]{appendix} % or other options
+\usepackage{graphicx} % Required for inserting images
+
+% Custom commands for partial derivatives
+\newcommand{\pd}{\partial}  % Short for \partial
+\newcommand{\pdm}{\partial_\mu}  % \partial_\mu
+\newcommand{\pdn}{\partial_\nu}  % \partial_\nu
+\newcommand{\pdup}{\partial^\mu}  % \partial^\mu
+\newcommand{\pdupnu}{\partial^\nu}  % \partial^\nu
+\newcommand{\Lag}{\mathcal{L}}  % Lagrangian shorthand
+\newcommand{\onehalf}{\frac{1}{2}}
+
+% Alternative shorter versions
+\newcommand{\dmu}{\partial_\mu}
+\newcommand{\dnu}{\partial_\nu}
+\newcommand{\dmuup}{\partial^\mu}
+\newcommand{\dnuup}{\partial^\nu}
+
+% Even shorter versions (if you prefer)
+\newcommand{\dm}{\partial_\mu}
+\newcommand{\dn}{\partial_\nu}
+\newcommand{\dmuu}{\partial^\mu}
+\newcommand{\dnuu}{\partial^\nu}
+
+\title{Personal Solutions to Problem Sheet 2 QFT by David Tong}
+\author{Baset}
+\date{October 2025}
+
+\begin{document}
+
+\maketitle
+\section*{1.}
+According to the definitions made:
+\begin{equation}
+    \begin{split}
+    [a_n,a_m] &= [\sqrt{\frac{\omega_n}{2}}q_n+\frac{i}{\sqrt{2\omega_n}}p_n,
+    \sqrt{\frac{\omega_m}{2}}q_m+\frac{i}{\sqrt{2\omega_m}}p_m]\\
+    &= \onehalf \{ i[q_n,p_m] + i[p_n,q_m] \} = 0
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    [a_n,a_m] &= [\sqrt{\frac{\omega_n}{2}}q_n+\frac{i}{\sqrt{2\omega_n}}p_n,
+    \sqrt{\frac{\omega_m}{2}}q_m+\frac{i}{\sqrt{2\omega_m}}p_m]\\
+    &= \onehalf \{ i[q_n,p_m] + i[p_n,q_m] \} = 0
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+    [a_n^\dagger,a_m^\dagger] &= [\sqrt{\frac{\omega_n}{2}}q_n-\frac{i}{\sqrt{2\omega_n}}p_n,
+    \sqrt{\frac{\omega_m}{2}}q_m-\frac{i}{\sqrt{2\omega_m}}p_m]\\
+    &= \onehalf \{ -i[q_n,p_m] - i[p_n,q_m] \} = 0
+\end{split}
+\end{equation}
+\begin{equation}\label{commuteofa}
+    \begin{split}
+    [a_n,a_m^\dagger] &= [\sqrt{\frac{\omega_n}{2}}q_n+\frac{i}{\sqrt{2\omega_n}}p_n,
+    \sqrt{\frac{\omega_m}{2}}q_m-\frac{i}{\sqrt{2\omega_m}}p_m]\\
+    &= \onehalf \{ -i[q_n,p_m] + i[p_n,q_m] \} =\delta_{nm}
+\end{split}
+\end{equation}
+Using ~\ref{commuteofa}:
+\begin{equation}
+    \begin{split}
+    H &= \sum_n \onehalf \omega_n( a_n a_n^\dagger + a_n^\dagger a_n ) = \sum_n \omega_n(a_n^\dagger a_n + \onehalf) \\
+    &=  \sum_n \omega_n ((\sqrt{\frac{\omega_n}{2}}q_n-\frac{i}{\sqrt{2\omega_n}}p_n)((\sqrt{\frac{\omega_n}{2}}q_n+\frac{i}{\sqrt{2\omega_n}}p_n) + \onehalf)) \\ 
+\end{split}
+\end{equation}
+\end{document}
