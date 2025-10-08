@@ -29,7 +29,7 @@
 \newcommand{\dmuu}{\partial^\mu}
 \newcommand{\dnuu}{\partial^\nu}
 
-\title{Personal Solutions to Problem Sheet 2 QFT by David Tong}
+\title{My Solutions to Problem Sheet 2 QFT by David Tong}
 \author{Baset}
 \date{October 2025}
 
@@ -72,7 +72,41 @@ Using ~\ref{commuteofa}:
 \begin{equation}
     \begin{split}
     H &= \sum_n \onehalf \omega_n( a_n a_n^\dagger + a_n^\dagger a_n ) = \sum_n \omega_n(a_n^\dagger a_n + \onehalf) \\
-    &=  \sum_n \omega_n ((\sqrt{\frac{\omega_n}{2}}q_n-\frac{i}{\sqrt{2\omega_n}}p_n)((\sqrt{\frac{\omega_n}{2}}q_n+\frac{i}{\sqrt{2\omega_n}}p_n) + \onehalf)) \\ 
+    &=  \sum_n \omega_n ((\sqrt{\frac{\omega_n}{2}}q_n-\frac{i}{\sqrt{2\omega_n}}p_n)(\sqrt{\frac{\omega_n}{2}}q_n+\frac{i}{\sqrt{2\omega_n}}p_n) + \onehalf) \\
+    &= \sum_n \omega_n(\onehalf\omega_n q_n^2 + \frac{1}{2\omega_n}p_n^2 + \frac{i}{2}[q_n,p_n] + \onehalf) \\
+    &= \sum_n \onehalf(p_n^2 + \omega_n^2q_n^2)
 \end{split}
+\end{equation}
+If we use the first line of the above calculation as $H$:
+\begin{equation}
+    \begin{split}
+        H\ket{0} = \sum_n \omega_n(a_n^\dagger a_n + \onehalf)\ket{0} = \infty\ket{0}    
+    \end{split}
+\end{equation}
+In the above $H$ terms, the only term that produces a non-zero energy when acting on vacuum $\ket{0}$ is the constant $\onehalf$ term, by removing it:
+\begin{equation}
+    \begin{split}
+        H\ket{0} = \sum_n\omega_na_n^\dagger a_n\ket{0} = 0\ket{0}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+    [H, a_n^\dagger]&=[\sum_{m=1}^\infty \omega_ma_m^\dagger a_m, a_n^\dagger] = \sum_{m=1}^\infty \omega_m [a_m^\dagger a_m, a_n^\dagger] \\
+    & = \sum_{m=1}^\infty \omega_m a_m^\dagger [a_m,a_n^\dagger] = \omega_na_n^\dagger
+    \end{split}
+\end{equation}
+Therefore:
+\begin{equation}
+    \begin{split}
+        [H, (a_n^\dagger)^l] &= [H,a_n^\dagger](a_n^\dagger)^{l-1} + a_n^\dagger[H,(a_n^\dagger)^{l-1}] = \omega_n(a_n^\dagger)^l + a_n^\dagger[H,(a_n^\dagger)^{l-1}]\\
+        &= \omega_n(a_n^\dagger)^l + a_n^\dagger()
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+        H\ket{l_1,l_2,...,l_N} = H(a_1^\dagger)^{l_1}(a_2^\dagger)^{l_2}...(a_N^\dagger)^{l_N}\ket{0} \\
+        & =
+    \end{split}
 \end{equation}
 \end{document}
