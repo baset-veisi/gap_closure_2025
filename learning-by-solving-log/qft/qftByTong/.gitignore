@@ -39,6 +39,8 @@
 *.vrb
 *.spl
 *.sout
+*.cursor
+*.json
 
 # macOS system files
 .DS_Store
