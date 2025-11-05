@@ -100,13 +100,22 @@ Therefore:
 \begin{equation}
     \begin{split}
         g_l \equiv [H, (a_n^\dagger)^l] &= [H,a_n^\dagger](a_n^\dagger)^{l-1} + a_n^\dagger[H,(a_n^\dagger)^{l-1}] = \omega_n(a_n^\dagger)^l + a_n^\dagger[H,(a_n^\dagger)^{l-1}]\\
-        &= \omega_n(a_n^\dagger)^l + a_n^\dagger g_{l-1} = \omega_n(a_n^\dagger)^l + a_n^\dagger(\omega_n )
+        &= \omega_n(a_n^\dagger)^l + a_n^\dagger g_{l-1} = \omega_n(a_n^\dagger)^l + a_n^\dagger(\omega_n(a_n^\dagger)^{l-1}
+        a_n^\dagger g_{l-2} ) \\
+        &=  2\omega_n(a_n^\dagger)^l + (a_n^\dagger)^2 g_{l-2} = \dots \\
+        &= l\omega_n(a_n^\dagger)^l + (a_n^\dagger)^l g_0 =  l\omega_n(a_n^\dagger)^l
     \end{split}
 \end{equation}
+
 \begin{equation}
     \begin{split}
-        H\ket{l_1,l_2,...,l_N} = H(a_1^\dagger)^{l_1}(a_2^\dagger)^{l_2}...(a_N^\dagger)^{l_N}\ket{0} \\
-        & =
+        H\ket{l_1,l_2,...,l_N} &= H(a_1^\dagger)^{l_1}(a_2^\dagger)^{l_2}...(a_N^\dagger)^{l_N}\ket{0} \\
+        & = ((a_1^\dagger)^{l_1}H + l_1\omega_1(a_1^\dagger)^{l_1})(a_2^\dagger)^{l_2}...(a_N^\dagger)^{l_N}\ket{0} \\
+        & = (a_1^\dagger)^{l_1}((l_2\omega_2)(a_2^\dagger)^{l_2} + (a_2^\dagger)^{l_2}H + l_1\omega_1 (a_2^\dagger)^{l_2})
+        \dots (a_N^\dagger)^{l_N}\ket{0}\\
+        & = (a_1^\dagger)^{l_1} (a_2^\dagger)^{l_2} ( (l_1\omega_1 + l_2\omega_2) + H) \dots (a_N^\dagger)^{l_N}\ket{0} = \dots\\
+        & = (a_1^\dagger)^{l_1} (a_2^\dagger)^{l_2}\dots (a_N^\dagger)^{l_N} (\sum l_i\omega_i + H )\ket{0} \\
+        &= \sum l_i\omega_i \ket{l_1,l_2,...,l_N}
     \end{split}
 \end{equation}
 \end{document}
