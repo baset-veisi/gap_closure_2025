@@ -16,6 +16,10 @@
 \newcommand{\pdupnu}{\partial^\nu}  % \partial^\nu
 \newcommand{\Lag}{\mathcal{L}}  % Lagrangian shorthand
 \newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\pdotx}{\vec{p}.\vec{x}}
+\newcommand{\qdoty}{\vec{q}.\vec{y}}
+\newcommand{\asp}{a_{\vec{p}}}
+\newcommand{\asq}{a_{\vec{q}}}
 
 % Alternative shorter versions
 \newcommand{\dmu}{\partial_\mu}
@@ -116,6 +120,24 @@ Therefore:
         & = (a_1^\dagger)^{l_1} (a_2^\dagger)^{l_2} ( (l_1\omega_1 + l_2\omega_2) + H) \dots (a_N^\dagger)^{l_N}\ket{0} = \dots\\
         & = (a_1^\dagger)^{l_1} (a_2^\dagger)^{l_2}\dots (a_N^\dagger)^{l_N} (\sum l_i\omega_i + H )\ket{0} \\
         &= \sum l_i\omega_i \ket{l_1,l_2,...,l_N}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        [\phi(\vec{x}), \phi(\vec{y})] &= \int\int \frac{d^3p\, d^3q}{(2\pi)^6}\frac{1}{2\sqrt{E_{\vec{p}}\, E_{\vec{q}}}}[
+            \asp \, e^{i\pdotx} + \asp^\dagger \, e^{-\pdotx}, \asq \, e^{i\qdoty} + \asq^\dagger \, e^{-i\qdoty}] \\
+        &= \int\int d\mathcal{P}\left(  e^{i (\pdotx - \qdoty)}[\asp, \asq^\dagger] + e^{i(\qdoty - \pdotx)}[\asp^\dagger,\asq]\right)\\
+        &= \int\int \frac{d^3p \, d^3q}{(2\pi)^3}\frac{1}{2\sqrt{E_{\vec{p}}\, E_{\vec{q}}}}  e^{i (\pdotx - \qdoty)} \delta(\vec{p}-\vec{q}) - \int\int 
+        \frac{d^3p \, d^3q}{(2\pi)^3} \frac{1}{2\sqrt{E_{\vec{p}}\, E_{\vec{q}}}} e^{i(\qdoty - \pdotx)} \delta(\vec{q}-\vec{p})\\
+        &= 0.
+    \end{split}
+\end{equation}
+
+
+\begin{equation}
+    \begin{split}
+        
     \end{split}
 \end{equation}
 \end{document}
