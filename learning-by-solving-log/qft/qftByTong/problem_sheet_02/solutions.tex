@@ -137,7 +137,21 @@ Therefore:
 
 \begin{equation}
     \begin{split}
-        
+        [\pi(\vec{x}), \pi(\vec{y})] &= \int\int - \frac{d^3p \, d^3q}{(2\pi)^3}\frac{\sqrt{E_{\vec{p}}E_{\vec{q}}}}{2}[
+            \asp \, e^{i\pdotx} - \asp^\dagger \, e^{-\pdotx}, \asq \, e^{i\qdoty} - \asq^\dagger \, e^{-i\qdoty}] \\
+        &= \int\int d\mathcal{P}\, (-1)\, \left( e^{i (\pdotx - \qdoty)}[\asp, \asq^\dagger] + e^{i(\qdoty - \pdotx)}[\asp^\dagger,\asq]  \right)\\
+        &= \int\int \frac{d^3p \, d^3q}{(2\pi)^3}\frac{\sqrt{E_{\vec{p}}\, E_{\vec{q}}}}{2\sqrt{E_{\vec{p}}\, E_{\vec{q}}}}  e^{i (\pdotx - \qdoty)} \delta(\vec{p}-\vec{q}) - \int\int 
+        \frac{d^3p \, d^3q}{(2\pi)^3} \frac{\sqrt{E_{\vec{p}}\, E_{\vec{q}}}}{2} e^{i(\qdoty - \pdotx)} \delta(\vec{q}-\vec{p})\\
+        &=0.
     \end{split}
 \end{equation}
+
+\begin{equation}
+    \begin{split}
+        [\phi(\vec{x}), \pi(\vec{y})] &= \int\int (-i) \frac{d^3p \, d^3q}{(2\pi)^3}\onehalf\sqrt{\frac{E_{\vec{q}}}{E_{\vec{p}}}}
+    \end{split}
+\end{equation}
+
+
+
 \end{document}
