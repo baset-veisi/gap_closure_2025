@@ -1,0 +1,796 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{gensymb}
+\usepackage{simpler-wick}
+\usepackage{tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{esvect}
+\usepackage{slashed}
+
+\usepackage[title]{appendix} % or other options
+\usepackage{graphicx} % Required for inserting images
+
+% Custom commands for partial derivatives
+\newcommand{\pd}{\partial}  % Short for \partial
+\newcommand{\pdm}{\partial_\mu}  % \partial_\mu
+\newcommand{\pdn}{\partial_\nu}  % \partial_\nu
+\newcommand{\pdup}{\partial^\mu}  % \partial^\mu
+\newcommand{\pdupnu}{\partial^\nu}  % \partial^\nu
+\newcommand{\Lag}{\mathcal{L}}  % Lagrangian shorthand
+\newcommand{\onehalf}{\frac{1}{2}}
+\newcommand{\pdotx}{\vec{p}.\vec{x}}
+\newcommand{\qdotx}{\vec{q}.\vec{x}}
+\newcommand{\sdotx}{\vec{s}.\vec{x}}
+\newcommand{\qdoty}{\vec{q}.\vec{y}}
+\newcommand{\asp}{a_{\vec{p}}}
+\newcommand{\ass}{a_{\vec{s}}}
+\newcommand{\asq}{a_{\vec{q}}}
+\newcommand{\adp}{a_{\vec{p}}^\dagger}
+\newcommand{\adq}{a_{\vec{q}}^\dagger}
+\newcommand{\ads}{a_{\vec{s}}^\dagger}
+
+\newcommand{\phionep}{\phi_1^+}
+\newcommand{\phionem}{\phi_1^-}
+\newcommand{\phitwop}{\phi_2^+}
+\newcommand{\phitwom}{\phi_2^-}
+\newcommand{\phithreep}{\phi_3^+}
+\newcommand{\phithreem}{\phi_3^-}
+
+\newcommand{\vecx}{\vec{x}}
+\newcommand{\vecy}{\vec{y}}
+\newcommand{\vecp}{\vec{p}}
+\newcommand{\vecq}{\vec{q}}
+\newcommand{\vecs}{\vec{s}}
+
+% Alternative shorter versions
+\newcommand{\dmu}{\partial_\mu}
+\newcommand{\dnu}{\partial_\nu}
+\newcommand{\dmuup}{\partial^\mu}
+\newcommand{\dnuup}{\partial^\nu}
+\newcommand{\lagden}{\mathcal{L}}
+% Even shorter versions (if you prefer)
+\newcommand{\dm}{\partial_\mu}
+\newcommand{\dn}{\partial_\nu}
+\newcommand{\dmuu}{\partial^\mu}
+\newcommand{\dnuu}{\partial^\nu}
+\newcommand{\lagrangian}{\mathcal{L}}
+
+\newcommand{\slashp}{\slashed{p}}
+\newcommand{\slashq}{\slashed{q}}
+
+
+\title{My Solutions to Problem Sheet 3 QFT by David Tong}
+\author{Baset}
+\date{October 2025}
+
+\begin{document}
+
+\maketitle
+\section*{1.}
+We need to show that $\{\gamma^\mu,\gamma^\nu \}=2\eta^{\mu\nu}\mathbf{I}$.
+
+First, let $\mu=0$ and $\nu=i$, then:
+\begin{equation}
+    \begin{split}
+      \{\gamma^0,\gamma^i \}=\begin{bmatrix}
+          0 & 1 \\ 1 & 0
+      \end{bmatrix}  \begin{bmatrix}
+          0 & \sigma^i \\ -\sigma^i & 0
+      \end{bmatrix}  + \begin{bmatrix}
+          0 & \sigma^i \\ -\sigma^i & 0
+      \end{bmatrix} \begin{bmatrix}
+          0 & 1 \\ 1 & 0
+      \end{bmatrix}  =  \begin{bmatrix}
+          -\sigma^i & 0 \\ 0 & \sigma^i
+      \end{bmatrix} + \begin{bmatrix}
+          \sigma^i & 0 \\ 0 & -\sigma^i
+      \end{bmatrix}=0
+    \end{split}
+\end{equation}
+Let $\sigma^0\equiv \begin{bmatrix}
+          1 & 0 \\ 0 & 1
+      \end{bmatrix} =1$, then $(\sigma^\mu)^2=1,$ $\forall \mu=0,1,2,3$:
+\begin{equation}
+    \begin{split}
+        \{\gamma^0,\gamma^0 \}&=2(\gamma^0)^2=2\begin{bmatrix}
+            (\sigma^0)^2 & 0\\ 0 & (\sigma^0)^2
+        \end{bmatrix}=2\mathbf{I}\\
+        \{\gamma^i,\gamma^i \}&=2(\gamma^i)^2=2\begin{bmatrix}
+            -(\sigma^i)^2 & 0\\ 0 & -(\sigma^i)^2
+        \end{bmatrix}=-2\mathbf{I}
+    \end{split}
+\end{equation}
+Now, if $i\ne j$:
+\begin{equation}
+    \begin{split}
+      \{\gamma^i,\gamma^j \}&=\begin{bmatrix}
+          0 & \sigma^i \\ -\sigma^i & 0
+      \end{bmatrix}  \begin{bmatrix}
+          0 & \sigma^j \\ -\sigma^j & 0
+      \end{bmatrix}  + \begin{bmatrix}
+          0 & \sigma^j \\ -\sigma^j & 0
+      \end{bmatrix} \begin{bmatrix}
+          0 & \sigma^i \\ -\sigma^i & 0
+      \end{bmatrix}  =  \begin{bmatrix}
+          -i\epsilon^{ij}_k \sigma^k& 0 \\ 0 & -i\epsilon^{ij}_k\sigma^k
+      \end{bmatrix} \\ &+ \begin{bmatrix}
+         -i\epsilon^{ji}_k \sigma^k & 0 \\ 0 & -i\epsilon^{ji}_k\sigma^k
+      \end{bmatrix}=0
+    \end{split}
+\end{equation}
+So basically:
+$$
+\{\gamma^\mu,\gamma^\nu \}=2\eta^{\mu\nu}\mathbf{I}
+$$
+From the looks of it, the $\gamma^0$ has been diagonalized using the $U$. The $\gamma^0$ has the following four eigen vectors, two degenerate eigen values, $\pm1$:
+\begin{equation}
+    \begin{split}
+        u_1=\frac{1}{\sqrt{2}}\begin{bmatrix}
+            1 \\ 0 \\ 1 \\ 0
+        \end{bmatrix},\,\,u_2=\frac{1}{\sqrt{2}}\begin{bmatrix}
+            0 \\ 1 \\ 0 \\ 1
+        \end{bmatrix},\,\, u_3=\frac{1}{\sqrt{2}}\begin{bmatrix}
+            1 \\ 0 \\ -1 \\ 0
+        \end{bmatrix},\,\,u_4=\frac{1}{\sqrt{2}}\begin{bmatrix}
+            0 \\ 1 \\ 0 \\ -1
+        \end{bmatrix}
+    \end{split}
+\end{equation}
+Therefore the speculated unitary looks like:
+\begin{equation}
+    \begin{split}
+        U=\frac{1}{\sqrt{2}}\begin{bmatrix}
+            1 & 1 \\ 1 & -1
+        \end{bmatrix}
+    \end{split}
+\end{equation}
+To confirm:
+\begin{equation}
+    (\gamma')^0=U\gamma^0U^\dagger=\begin{bmatrix}
+            1 & 0 \\ 0 & -1
+        \end{bmatrix}
+\end{equation}
+With a simple matrix multiplication one can also see that:
+$$
+(\gamma')^i = U\gamma^iU^\dagger
+$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.}
+
+Assume the Clifford algebra
+\begin{equation}
+    \{\gamma^\mu,\gamma^\nu\}
+    =
+    \gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu
+    =
+    2\eta^{\mu\nu}\mathbf 1 .
+\end{equation}
+We first prove
+\begin{equation}
+    \left[\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu\right]
+    =
+    2\eta^{\lambda\mu}\gamma^\kappa\gamma^\nu
+    -
+    2\eta^{\kappa\mu}\gamma^\lambda\gamma^\nu
+    +
+    2\eta^{\lambda\nu}\gamma^\mu\gamma^\kappa
+    -
+    2\eta^{\kappa\nu}\gamma^\mu\gamma^\lambda .
+\end{equation}
+
+We use the identity
+\begin{equation}
+    [AB,CD]
+    =
+    \{B,C\}AD
+    -
+    \{A,C\}BD
+    +
+    C A\{B,D\}
+    -
+    C\{A,D\}B ,
+\end{equation}
+which follows by repeated addition and subtraction of intermediate terms. Taking
+\begin{equation}
+    A=\gamma^\kappa,
+    \qquad
+    B=\gamma^\lambda,
+    \qquad
+    C=\gamma^\mu,
+    \qquad
+    D=\gamma^\nu,
+\end{equation}
+we get
+\begin{equation}
+\begin{split}
+    [\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu]
+    &=
+    \{\gamma^\lambda,\gamma^\mu\}\gamma^\kappa\gamma^\nu
+    -
+    \{\gamma^\kappa,\gamma^\mu\}\gamma^\lambda\gamma^\nu
+    \\
+    &\quad+
+    \gamma^\mu\gamma^\kappa\{\gamma^\lambda,\gamma^\nu\}
+    -
+    \gamma^\mu\{\gamma^\kappa,\gamma^\nu\}\gamma^\lambda .
+\end{split}
+\end{equation}
+Using
+\begin{equation}
+    \{\gamma^\alpha,\gamma^\beta\}
+    =
+    2\eta^{\alpha\beta}\mathbf 1,
+\end{equation}
+this becomes
+\begin{equation}
+\begin{split}
+    [\gamma^\kappa\gamma^\lambda,\gamma^\mu\gamma^\nu]
+    &=
+    2\eta^{\lambda\mu}\gamma^\kappa\gamma^\nu
+    -
+    2\eta^{\kappa\mu}\gamma^\lambda\gamma^\nu
+    \\
+    &\quad+
+    2\eta^{\lambda\nu}\gamma^\mu\gamma^\kappa
+    -
+    2\eta^{\kappa\nu}\gamma^\mu\gamma^\lambda .
+\end{split}
+\end{equation}
+This proves the required identity.
+
+Now define
+\begin{equation}
+    S^{\mu\nu}
+    \equiv
+    \frac14[\gamma^\mu,\gamma^\nu].
+\end{equation}
+Using the Clifford algebra,
+\begin{equation}
+    \gamma^\nu\gamma^\mu
+    =
+    2\eta^{\mu\nu}-\gamma^\mu\gamma^\nu,
+\end{equation}
+we find
+\begin{equation}
+\begin{split}
+    S^{\mu\nu}
+    &=
+    \frac14
+    \left(
+        \gamma^\mu\gamma^\nu
+        -
+        \gamma^\nu\gamma^\mu
+    \right)
+    \\
+    &=
+    \frac14
+    \left(
+        \gamma^\mu\gamma^\nu
+        -
+        2\eta^{\mu\nu}
+        +
+        \gamma^\mu\gamma^\nu
+    \right)
+    \\
+    &=
+    \frac12
+    \left(
+        \gamma^\mu\gamma^\nu-\eta^{\mu\nu}
+    \right).
+\end{split}
+\end{equation}
+
+Finally, we show that the matrices \(S^{\mu\nu}\) form a representation of the Lorentz Lie algebra. Since the metric terms commute with everything,
+\begin{equation}
+\begin{split}
+    [S^{\mu\nu},S^{\rho\sigma}]
+    &=
+    \frac14
+    [\gamma^\mu\gamma^\nu,\gamma^\rho\gamma^\sigma].
+\end{split}
+\end{equation}
+Using the identity proved above, with
+\begin{equation}
+    \kappa=\mu,
+    \qquad
+    \lambda=\nu,
+\end{equation}
+we obtain
+\begin{equation}
+\begin{split}
+    [S^{\mu\nu},S^{\rho\sigma}]
+    &=
+    \frac14
+    \left(
+        2\eta^{\nu\rho}\gamma^\mu\gamma^\sigma
+        -
+        2\eta^{\mu\rho}\gamma^\nu\gamma^\sigma
+        +
+        2\eta^{\nu\sigma}\gamma^\rho\gamma^\mu
+        -
+        2\eta^{\mu\sigma}\gamma^\rho\gamma^\nu
+    \right)
+    \\
+    &=
+    \frac12\eta^{\nu\rho}\gamma^\mu\gamma^\sigma
+    -
+    \frac12\eta^{\mu\rho}\gamma^\nu\gamma^\sigma
+    +
+    \frac12\eta^{\nu\sigma}\gamma^\rho\gamma^\mu
+    -
+    \frac12\eta^{\mu\sigma}\gamma^\rho\gamma^\nu .
+\end{split}
+\end{equation}
+Using
+\begin{equation}
+    \frac12\gamma^\alpha\gamma^\beta
+    =
+    S^{\alpha\beta}
+    +
+    \frac12\eta^{\alpha\beta},
+\end{equation}
+we get
+\begin{equation}
+\begin{split}
+    [S^{\mu\nu},S^{\rho\sigma}]
+    &=
+    \eta^{\nu\rho}S^{\mu\sigma}
+    -
+    \eta^{\mu\rho}S^{\nu\sigma}
+    +
+    \eta^{\nu\sigma}S^{\rho\mu}
+    -
+    \eta^{\mu\sigma}S^{\rho\nu}.
+\end{split}
+\end{equation}
+Since
+\begin{equation}
+    S^{\rho\mu}=-S^{\mu\rho},
+    \qquad
+    S^{\rho\nu}=-S^{\nu\rho},
+\end{equation}
+this becomes
+\begin{equation}
+    \boxed{
+    [S^{\mu\nu},S^{\rho\sigma}]
+    =
+    \eta^{\nu\rho}S^{\mu\sigma}
+    -
+    \eta^{\mu\rho}S^{\nu\sigma}
+    +
+    \eta^{\mu\sigma}S^{\nu\rho}
+    -
+    \eta^{\nu\sigma}S^{\mu\rho}
+    }.
+\end{equation}
+This is precisely the Lorentz Lie algebra in the spinor representation. Hence the matrices
+\begin{equation}
+    S^{\mu\nu}
+    =
+    \frac14[\gamma^\mu,\gamma^\nu]
+\end{equation}
+form a representation of the Lie algebra of the Lorentz group.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{3.}
+\subsection*{i.}
+In chiral representation, $\Tr{\gamma^\mu}=0$, hence in any other, we use the cyclicity:
+\begin{equation}
+    \Tr{U\gamma^\mu U^\dagger}=\Tr{U^\dagger U\gamma^\mu }=\Tr{\gamma^\mu}=0
+\end{equation}
+\subsection*{ii.}
+\begin{equation}
+    \begin{split}
+        \Tr{ \left\{\gamma^\mu,\gamma^\nu\right\} }=2\Tr{\gamma^\mu\gamma^\nu}=8\eta^{\mu\nu} \implies \Tr{\gamma^\mu\gamma^\nu}=4\eta^{\mu\nu}
+    \end{split}
+\end{equation}
+
+\subsection*{iii.}
+\subsubsection*{preliminary iii.A:}$$\{\gamma^5, \gamma^\mu\}=0$$.
+\subsubsection*{pf:}
+Let $\mu=3$:
+$$\{\gamma^5,\gamma^3\}=-i\{\gamma^0\gamma^1\gamma^2\gamma^3, \gamma^3\}=-i(\gamma^0\gamma^1\gamma^2\gamma^3\gamma^3 + \gamma^3\gamma^0\gamma^1\gamma^2\gamma^3)$$
+$$=-i(\gamma^0\gamma^1\gamma^2\gamma^3\gamma^3+(-1)^3 \gamma^0\gamma^1\gamma^2\gamma^3\gamma^3)=0$$
+Let $\mu=2$:
+$$\{\gamma^5,\gamma^2\}=-i\{\gamma^0\gamma^1\gamma^2\gamma^3, \gamma^2\}=-i(\gamma^0\gamma^1\gamma^2\gamma^3\gamma^2 + \gamma^2\gamma^0\gamma^1\gamma^2\gamma^3)$$
+$$=-i(-\gamma^0\gamma^1\gamma^2\gamma^2\gamma^3+(-1)^2 \gamma^0\gamma^1\gamma^2\gamma^2\gamma^3)=0$$
+$\mu=1$ is similar, just out of sheer justification, for $\mu=0$:
+$$\{\gamma^5,\gamma^0\}=-i\{\gamma^0\gamma^1\gamma^2\gamma^3, \gamma^0\}=-i(\gamma^0\gamma^1\gamma^2\gamma^3\gamma^0 + \gamma^0\gamma^0\gamma^1\gamma^2\gamma^3)$$
+$$=-i((-1)^3\gamma^0\gamma^0\gamma^1\gamma^2\gamma^3+ \gamma^0\gamma^0\gamma^1\gamma^2\gamma^3)=0 \quad \blacksquare$$ 
+With this in hand:
+$$
+\Tr{\gamma^\mu\gamma^\nu\gamma^\rho} = \Tr{(\gamma^5)^2\gamma^\mu\gamma^\nu\gamma^\rho} = \Tr{\gamma^5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^5} = $$
+
+$$\Tr{(-1)^3\gamma^\mu\gamma^\nu(\gamma^5)^2\gamma^\rho}=-\Tr{\gamma^\mu\gamma^\nu\gamma^\rho}
+$$
+$$
+\implies \Tr{\gamma^\mu\gamma^\nu\gamma^\rho}=0.\quad \blacksquare
+$$
+\subsection*{iv.}
+\begin{equation}
+    \begin{split}
+        (\gamma^5)^2&=-\gamma^0\gamma^1\gamma^2\gamma^3\gamma^0\gamma^1\gamma^2\gamma^3=-(-1)^3(\gamma^0)^2\gamma^1\gamma^2\gamma^3\gamma^1\gamma^2\gamma^3 \\ 
+        &= \gamma^1\gamma^2\gamma^3\gamma^1\gamma^2\gamma^3=(-1)^2(\gamma^1)^2\gamma^2\gamma^3\gamma^2\gamma^3=- \gamma^2\gamma^3\gamma^2\gamma^3\\
+        &= (\gamma^2)^2(\gamma^3)^2 = 1 \quad \blacksquare
+    \end{split}
+\end{equation}
+
+\subsection*{v.}
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5} = \Tr{-i\gamma^0\gamma^1\gamma^2\gamma^3}=i\Tr{\gamma^1\gamma^0\gamma^2\gamma^3}=i\Tr{\gamma^1\gamma^2\gamma^3\gamma^0}
+    \end{split}
+\end{equation}
+But, also:
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5} = \Tr{-i\gamma^0\gamma^1\gamma^2\gamma^3}=-i\Tr{\gamma^1\gamma^2\gamma^3\gamma^0}
+    \end{split}
+\end{equation}
+Therefore:
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5} = -\Tr{\gamma^5} \implies \Tr{\gamma^5} = 0. \quad \blacksquare 
+    \end{split}
+\end{equation}
+
+\subsection*{vi.}
+\begin{equation}
+    \begin{split}
+        \slashp \, \slashq = p_\mu\gamma^\mu \, q_\nu\gamma_\nu = p_\mu q_\nu(2\eta^{\mu\nu}-\gamma^\nu\gamma^\mu) = 2\, p.q \, - \, \slashq\,\slashp. \quad \blacksquare
+    \end{split}
+\end{equation}
+We know that:
+\begin{equation}
+    \begin{split}
+        4S^{\mu\nu} = \gamma^\mu\gamma^\nu - \gamma^\nu\gamma^\mu
+    \end{split}
+\end{equation}
+Hence:
+\begin{equation}
+    \begin{split}
+        \slashp \, \slashq = p_\mu q_\nu(\eta^{\mu\nu} + 2S^{\mu\nu})=p\, .\, q \, + 2S^{\mu\nu}p_\mu q_\nu. \quad \blacksquare
+    \end{split}
+\end{equation}
+
+\subsection*{vii.}
+\subsubsection*{preliminary vii.A:}$$\Tr{S^{\mu\nu}}=0$$
+\subsubsection*{pf:}
+\begin{equation}
+    \Tr{S^{\mu\nu}} = \frac14 \Tr{[\gamma^\mu, \gamma^\nu]} = \frac14\Tr{\gamma^\mu\gamma^\nu - \gamma^\nu\gamma^\mu} = \eta^{\mu\nu}-\eta^{\nu\mu} = 0. \quad \blacksquare
+\end{equation}
+Knowing this and using (vi):
+\begin{equation}
+    \begin{split}
+        \Tr{\slashp \, \slashq}=\Tr{p\, .\, q \, + 2S^{\mu\nu}p_\mu q_\nu.} = 4p . q\, . \quad \blacksquare
+    \end{split}
+\end{equation}
+
+\subsection*{viii.}
+First, let's explore this for simpler cases of $n=1$ and $n=3$. Let $n=1$:
+\begin{equation}
+    \begin{split}
+        \Tr{\slashp_1}=\Tr{\gamma^{\mu_1}p_{1\mu_1}} = p_{1\mu_1}\Tr{\gamma^{\mu_1}} = 0. \quad \blacksquare
+    \end{split}
+\end{equation}
+Let $n=3$, by (iii):
+\begin{equation}
+    \begin{split}
+    \Tr{\slashp_1\slashp_2\slashp_3}=p_{1\mu_1}p_{2\mu_2}p_{3\mu_3}\Tr{\gamma^{\mu_1}\gamma^{\mu_2}\gamma^{\mu_3}} = 0. \quad \blacksquare
+    \end{split}
+\end{equation}
+Now let $n=2l+1$, for some $l \in \mathbb{N}$ and we use (iii.A) repeatedly:
+\begin{equation}
+    \begin{split}
+        \Tr{\slashp_1 \dots \slashp_n}&=p_{1 \mu_1}\dots p_{n \mu_n}\Tr{\gamma^5\gamma^{\mu_1}\dots \gamma^{\mu_l} \gamma^{\mu_{l+1}} \dots \gamma^{\mu_{2l+1}}\gamma^{5}}\\
+        &=p_{1 \mu_1}\dots p_{n \mu_n}\Tr\left\{\gamma^{\mu_1}\dots \gamma^{\mu_l}(-1)^l \gamma^5 \gamma^5 (-1)^{(l+1)}\gamma^{\mu_{l+1}}\right. \\ & \left.\dots \gamma^{\mu_{2l+1}}\right\}=-\Tr{\slashp_1 \dots \slashp_n} \\ & \implies \Tr{\slashp_1 \dots \slashp_n}=0. \quad \blacksquare
+    \end{split}
+\end{equation}
+
+\subsection*{ix.}
+\begin{equation}
+    \begin{split}
+        \Tr{\slashp_1\,\slashp_2\,\slashp_3\,\slashp_4}&=\overbrace{p_{1\mu}p_{2\nu}p_{3\rho}p_{4\sigma}}^{A_{\mu\nu\rho\sigma}}\Tr{\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma}\\ &=A_{\mu\nu\rho\sigma}\Tr{(2\eta^{\mu\nu}-\gamma^\nu\gamma^\mu)\gamma^\rho\gamma^\sigma}\\
+        &= 2A_{\mu\nu\rho\sigma}\eta^{\mu\nu}\Tr{\gamma^\rho\gamma^\sigma}-A_{\mu\nu\rho\sigma}\Tr{\gamma^\nu\gamma^\mu\gamma^\rho\gamma^\sigma}\\ 
+        &= 8A_{\mu\nu\rho\sigma}\eta^{\mu\nu}\eta^{\rho\sigma}-A_{\mu\nu\rho\sigma}\Tr{\gamma^\nu(2\eta^{\mu\rho}-\gamma^\rho\gamma^\mu)\gamma^\sigma}\\
+        &= 8(p_1.p_2)(p_3.p_4)-8(p_1.p_3)(p_2.p_4)\\ 
+        &+8(p_1.p_4)(p_2.p_3)-\Tr{\slashp_1\,\slashp_2\,\slashp_3\,\slashp_4}
+    \end{split}
+\end{equation}
+Hence:
+\begin{equation}
+    \begin{split}
+        \Tr{\slashp_1\,\slashp_2\,\slashp_3\,\slashp_4}&=4(p_1.p_2)(p_3.p_4)-4(p_1.p_3)(p_2.p_4)\\
+        &+4(p_1.p_4)(p_2.p_3)\,. \quad \blacksquare
+    \end{split}
+\end{equation}
+
+
+\subsection*{x.}
+
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5 \slashp_1\, \slashp_2} &=p_{1\mu} p_{2\nu}\Tr{\gamma^5\, \gamma^\mu \gamma^\nu}
+    \end{split}
+\end{equation}
+Let $A=\gamma^5\, \gamma^\mu \gamma^\nu$, in 4 dimensional spacetime, there always exists index $\rho$ different from chosen $\mu$ and $\nu$, and hence:
+\begin{equation}
+    \begin{split}
+        \{\gamma^\rho,\gamma^5 \} = \{\gamma^\rho,\gamma^\nu \} = \{\gamma^\rho, \gamma^\mu \} = 0
+    \end{split}
+\end{equation}
+Which means that:
+\begin{equation}
+    \gamma^\rho A = -A\gamma^\rho
+\end{equation}
+Since $(\gamma^\rho)^2 = \eta^{\rho\rho}I$, therefore $\gamma^\rho$ has an inverse, and hence:
+\begin{equation}
+    \begin{split}
+        \gamma^\rho A (\gamma^\rho)^{-1} = -A \implies \Tr{A} = -\Tr{A} \implies \Tr{A} = 0.
+    \end{split}
+\end{equation}
+Therefore:
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5 \slashp_1\, \slashp_2} &=p_{1\mu} p_{2\nu}\Tr{A}=0. \quad \blacksquare
+    \end{split}
+\end{equation}
+
+
+\subsection*{xi.}
+\begin{equation}
+    \begin{split}
+        \gamma_\mu \slashp \gamma^\mu &= p_\nu \eta_{\sigma\mu}\gamma^\sigma\gamma^\nu \gamma^\mu=p_\nu \eta_{\sigma\mu}(2\eta^{\sigma\nu}-\gamma^\nu\gamma^\sigma)\gamma^\mu=2\slashp-\slashp \gamma_\mu\gamma^\mu \\
+        & = -2\slashp. \quad \blacksquare
+    \end{split}
+\end{equation}
+
+\subsection*{xii.}
+\begin{equation}
+\begin{split}
+        \gamma_\mu\,\slashp_1\slashp_2 \gamma^\mu&= p_{2\nu}\gamma_\mu\,\slashp_1 \gamma^\nu\gamma^\mu = p_{1\rho}p_{2\nu}\gamma_\mu\gamma^\rho (2\eta^{\mu\nu}-\gamma^\mu \gamma^\nu) \\
+        &= 2\slashp_2\slashp_1 - \gamma_\mu \slashp_1 \gamma^\mu \slashp_2 = 2\{\slashp_1, \slashp_2\} = 4p_1.p_2 \quad \blacksquare
+\end{split}
+\end{equation}
+
+\subsection*{xiii.}
+\begin{equation}
+    \begin{split}
+        \gamma_\mu\,\slashp_1\slashp_2\slashp_3 \gamma^\mu &=p_{3\nu}\gamma_\mu \, \slashp_1\slashp_2 (2\eta^{\mu\nu}-\gamma^\mu\gamma^\nu)=2\slashp_3\slashp_1\slashp_2\\
+        &- (\gamma_\mu\,\slashp_1\slashp_2 \gamma^\mu)\slashp_3=2\slashp_3\slashp_1\slashp_2-2(2p_1.p_2)\slashp_3\\
+        & = 2\slashp_3\slashp_1\slashp_2-4\slashp_3 (p_1.p_2)=2\slashp_3(\slashp_1\slashp_2-2p_1.p_2)\\
+        &= -2\slashp_3\slashp_2\slashp_1. \quad \blacksquare
+    \end{split}
+\end{equation}
+
+\subsection*{xiv.}
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5\, \slashp_1\slashp_2\slashp_3\slashp_4}&=p_1^\mu p_2^\nu p_3^\rho p_4^\sigma \Tr{\gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma}
+    \end{split}
+\end{equation}
+If any pair of indices are equal we will get a term prop. to $\Tr{\gamma^5\gamma^\alpha\gamma^\beta}$ which is $0$ as was shown in (x). Therefore no two indices among $\{\mu,\nu,\rho,\sigma\}$ can be equal, and moreover, we are in 4-d spacetime, hence the above expression can be combinatorial of $\{0,1,2,3\}$. Now let, for example, $\mu=0,\nu=1,\rho=2,\sigma=3$. Then we have that:
+\begin{equation}
+    \begin{split}
+        A^{\mu\nu\rho\sigma}\Tr{-i\gamma^0\gamma^1\gamma^2\gamma^3\, \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma}&=A^{\mu\nu\rho\sigma} \Tr{i I }=4iA^{\mu\nu\rho\sigma}
+    \end{split}
+\end{equation}
+Any other combinatorial of this sequence is contributing to the original expression except for the fact that if two indices are  exchanged, there will be a $-1$ sign as due to the fact that in our case $\{\gamma^\mu, \gamma^\nu\}=0.$ We can use a symbol that captures these sign changes, and that is the Levi-Civita symbol in 4-d. Hence:
+\begin{equation}
+    \begin{split}
+        \Tr{\gamma^5\, \slashp_1\slashp_2\slashp_3\slashp_4}&=4i\epsilon_{\mu\nu\rho\sigma}\,p_1^\mu p_2^\nu p_3^\rho p_4^\sigma. \quad \blacksquare
+    \end{split}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section*{4.}
+We first prove the Eq.(5) set in the problems list. We have that:
+\begin{equation}
+    \begin{split}
+        u^r(\vecp)^\dagger . u^s(\vecp) &= \begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^r)^\dagger & \sqrt{p.\bar{\sigma}}(\xi^r)^\dagger
+        \end{bmatrix}\begin{bmatrix}
+            \sqrt{p.\sigma}\xi^s \\ \sqrt{p.\bar{\sigma}}\xi^s
+        \end{bmatrix} = p.\sigma \, \delta^{rs} + p.\bar{\sigma} \, \delta^{rs} \\
+        & = 2p_0 \delta^{rs}
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+        \bar{u}^r(\vecp)\, . \, u^s(\vecp) &= \begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^r)^\dagger & \sqrt{p.\bar{\sigma}}(\xi^r)^\dagger
+        \end{bmatrix}\gamma^0\begin{bmatrix}
+            \sqrt{p.\sigma}\xi^s \\ \sqrt{p.\bar{\sigma}}\xi^s
+        \end{bmatrix} \\
+        &= 2\sqrt{(p.\sigma)(p.\bar{\sigma})}\, \delta^{rs}
+    \end{split}
+\end{equation}
+We have that:
+\begin{equation}
+    \begin{split}
+        (p.\sigma)(p.\bar{\sigma})&= (p_0 + p_i\sigma^i)(p_0 - p_i\sigma^i)=p_0^2-p_ip_j\sigma^i\sigma^j \\
+        &=p_0^2-p^ip^j(\delta_{ij}+i\epsilon_{ijk} \sigma^k)=m^2-ip^ip^j\epsilon_{ijk} \sigma^k\\ 
+        &= m^2
+    \end{split}
+\end{equation}
+Hence:
+\begin{equation}
+    \begin{split}
+        \bar{u}^r(\vecp)\, . \, u^s(\vecp) &= 2m\delta^{rs}. \quad \blacksquare
+    \end{split}
+\end{equation}
+Similarly for Eqs. (6):
+\begin{equation}
+    \begin{split}
+        v^r(\vecp)^\dagger . v^s(\vecp) &= \begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^r)^\dagger & -\sqrt{p.\bar{\sigma}}(\xi^r)^\dagger
+        \end{bmatrix}\begin{bmatrix}
+            \sqrt{p.\sigma}\xi^s \\ -\sqrt{p.\bar{\sigma}}\xi^s
+        \end{bmatrix} = p.\sigma \, \delta^{rs} + p.\bar{\sigma} \, \delta^{rs} \\
+        & = 2p_0 \delta^{rs}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \bar{v}^r(\vecp)\, . \, v^s(\vecp) &= \begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^r)^\dagger & -\sqrt{p.\bar{\sigma}}(\xi^r)^\dagger
+        \end{bmatrix}\gamma^0\begin{bmatrix}
+            \sqrt{p.\sigma}\xi^s \\ -\sqrt{p.\bar{\sigma}}\xi^s
+        \end{bmatrix} \\
+        &= -2\sqrt{(p.\sigma)(p.\bar{\sigma})}\, \delta^{rs}=-2m \delta^{rs}.\quad \blacksquare
+    \end{split}
+\end{equation}
+For Eq. (7):
+\begin{equation}
+    \begin{split}
+        \bar{u}^s(\vecp)\, . \, v^r(\vecp) &= \begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^s)^\dagger & \sqrt{p.\bar{\sigma}}(\xi^s)^\dagger
+        \end{bmatrix}\gamma^0 \begin{bmatrix}
+            \sqrt{p.\sigma}\xi^r \\ -\sqrt{p.\bar{\sigma}}\xi^r
+        \end{bmatrix} \\
+        & = (\sqrt{p.\sigma}\sqrt{p.\bar{\sigma}}-\sqrt{p.\sigma}\sqrt{p.\bar{\sigma}})\delta^{sr} = 0. \quad \blacksquare
+    \end{split}
+\end{equation}
+And Finally Eq. (8):
+\begin{equation}
+    \begin{split}
+       (u^s(\vecp))^\dagger\, . \, v^r(-\vecp) &= \begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^s)^\dagger & \sqrt{p.\bar{\sigma}}(\xi^s)^\dagger
+        \end{bmatrix} \begin{bmatrix}
+            \sqrt{p.\bar{\sigma}}\xi^r \\ -\sqrt{p.\sigma}\xi^r
+        \end{bmatrix} \\
+        & = (\sqrt{p.\sigma}\sqrt{p.\bar{\sigma}}-\sqrt{p.\sigma}\sqrt{p.\bar{\sigma}})\delta^{sr} = 0. \quad \blacksquare
+    \end{split}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5.}
+For Eq. (9):
+\begin{equation}
+    \begin{split}
+        \sum_{s=1}^2 u^s(\vecp) \bar{u}^s(\vecp) &= \sum_{s=1}^2 \begin{bmatrix}
+            \sqrt{p.\sigma}\xi^s \\ \sqrt{p.\bar{\sigma}}\xi^s
+        \end{bmatrix}\begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^s)^\dagger & \sqrt{p.\bar{\sigma}}(\xi^s)^\dagger
+        \end{bmatrix}\gamma^0 \\
+        &= \begin{bmatrix}
+            p.\sigma \,\sum_{s=1}^2\xi^s(\xi^s)^\dagger & m\, \sum_{s=1}^2\xi^s(\xi^s)^\dagger \\ m\, \sum_{s=1}^2\xi^s(\xi^s)^\dagger & p.\bar{\sigma} \, \sum_{s=1}^2\xi^s(\xi^s)^\dagger
+        \end{bmatrix}\gamma^0 \\
+        &= \begin{bmatrix}
+            p.\sigma \,\mathcal{I}_2 & m\, \mathcal{I}_2 \\ m\, \mathcal{I}_2 & p.\bar{\sigma} \, \mathcal{I}_2
+        \end{bmatrix}\begin{bmatrix}
+            0 & 1 \\ 1 & 0
+        \end{bmatrix}=\begin{bmatrix}
+            m\, \mathcal{I}_2 & p.\sigma \,\mathcal{I}_2 \\
+            p.\bar{\sigma} \, \mathcal{I}_2 & m\, \mathcal{I}_2
+        \end{bmatrix} \\
+        &= m\,\mathcal{I}_4 + p_0\gamma^0 + \sum_i p_i\begin{bmatrix}
+            0 & \sigma^i \\ -\sigma^i & 0
+        \end{bmatrix} \\
+        &\equiv \slashp + m. \quad \blacksquare
+    \end{split}
+\end{equation}
+For Eq. (10):
+\begin{equation}
+    \begin{split}
+        \sum_{s=1}^2 v^s(\vecp) \bar{v}^s(\vecp) &= \sum_{s=1}^2 \begin{bmatrix}
+            \sqrt{p.\sigma}\xi^s \\ -\sqrt{p.\bar{\sigma}}\xi^s
+        \end{bmatrix}\begin{bmatrix}
+            \sqrt{p.\sigma}(\xi^s)^\dagger & -\sqrt{p.\bar{\sigma}}(\xi^s)^\dagger
+        \end{bmatrix}\gamma^0 \\
+        &= \begin{bmatrix}
+            p.\sigma \,\sum_{s=1}^2\xi^s(\xi^s)^\dagger & -m\, \sum_{s=1}^2\xi^s(\xi^s)^\dagger \\ -m\, \sum_{s=1}^2\xi^s(\xi^s)^\dagger & p.\bar{\sigma} \, \sum_{s=1}^2\xi^s(\xi^s)^\dagger
+        \end{bmatrix}\gamma^0 \\
+        &= \begin{bmatrix}
+            p.\sigma \,\mathcal{I}_2 & -m\, \mathcal{I}_2 \\ -m\, \mathcal{I}_2 & p.\bar{\sigma} \, \mathcal{I}_2
+        \end{bmatrix}\begin{bmatrix}
+            0 & 1 \\ 1 & 0
+        \end{bmatrix}=\begin{bmatrix}
+            -m\, \mathcal{I}_2 & p.\sigma \,\mathcal{I}_2 \\
+            p.\bar{\sigma} \, \mathcal{I}_2 & -m\, \mathcal{I}_2
+        \end{bmatrix} \\
+        &= -m\,\mathcal{I}_4 + p_0\gamma^0 + \sum_i p_i\begin{bmatrix}
+            0 & \sigma^i \\ -\sigma^i & 0
+        \end{bmatrix} \\
+        &\equiv \slashp - m. \quad \blacksquare
+    \end{split}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{6.}
+\begin{equation}
+    \begin{split}
+        \{\psi_\alpha(\vecx), \psi_\beta(\vecy) \}&=\int \frac{d^3p\,d^3q}{(2\pi)^6}\frac{1}{2\sqrt{E_{\vecp}E_{\vecq}}}\sum_{r,s=1}^2 \{ b^r_{\vecp}u_\alpha^r(\vecp)e^{i\vecp.\vecx}+(c^r_{\vecp})^\dagger v_\alpha^r(\vecp)e^{-i\vecp.\vecx},\\ & b^s_{\vecq} u_\beta^s(\vecq)e^{i\vecq.\vecy}+ (c^s_{\vecq})^\dagger v^s_\beta(\vecq) e^{-i\vecq.\vecy}\} = 0. \quad \blacksquare
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+        \{\psi_\alpha^\dagger(\vecx), \psi_\beta^\dagger(\vecy) \}&=\int \frac{d^3p\,d^3q}{(2\pi)^6}\frac{1}{2\sqrt{E_{\vecp}E_{\vecq}}}\sum_{r,s=1}^2 \{ (b^r_{\vecp})^\dagger (u_\alpha^r(\vecp))^\dagger e^{-i\vecp.\vecx}+c^r_{\vecp} (v_\alpha^r(\vecp))^\dagger e^{i\vecp.\vecx},\\ & (b^s_{\vecq})^\dagger (u_\beta^s(\vecq))^\dagger e^{-i\vecq.\vecy}+ c^s_{\vecq} (v^s_\beta(\vecq))^\dagger e^{i\vecq.\vecy}\} = 0. \quad \blacksquare
+    \end{split}
+\end{equation}
+\begin{equation}
+    \begin{split}
+        \{\psi_\alpha(\vecx), \psi_\beta^\dagger(\vecy) \}&=\int \frac{d^3p\,d^3q}{(2\pi)^6}\frac{1}{2\sqrt{E_{\vecp}E_{\vecq}}}\sum_{r,s=1}^2 \{ b^r_{\vecp} u_\alpha^r(\vecp) e^{i\vecp.\vecx}+(c^r_{\vecp})^\dagger v_\alpha^r(\vecp) e^{-i\vecp.\vecx},\\ & (b^s_{\vecq})^\dagger (u_\beta^s(\vecq))^\dagger e^{-i\vecq.\vecy}+ c^s_{\vecq} (v^s_\beta(\vecq))^\dagger e^{i\vecq.\vecy}\} = \int \frac{d^3p\,d^3q}{(2\pi)^6}\frac{1}{2\sqrt{E_{\vecp}E_{\vecq}}}\sum_{r,s=1}^2 \\ 
+        & (  \{b^r_{\vecp},(b^s_{\vecq})^\dagger\}u_\alpha^r(\vecp)(u_\beta^s(\vecq))^\dagger e^{i(\pdotx-\qdoty)} +\{(c^r_{\vecp})^\dagger,c^s_{\vecq} \}v_\alpha^r(\vecp)(v^s_\beta(\vecq))^\dagger e^{-i(\pdotx-\qdoty)}) \\
+        & =  \int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_{\vecp}}[(\sum_{r=1}^2u^r(\vecp)\bar{u}^r(\vecp)e^{i\vecp.(\vecx-\vecy)}+\sum_{r=1}^2v^r(\vecp)\bar{v}^r(\vecp)e^{-i\vecp.(\vecx-\vecy)})\gamma^0]_{\alpha\beta}\\
+        &=\int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_{\vecp}}[((\slashp+m)e^{i\vecp.(\vecx-\vecy)} + (\slashp -m)e^{-i\vecp.(\vecx-\vecy)})\gamma^0]_{\alpha\beta}\\
+        &=[(i\partial_j\gamma^j+m)\gamma^0]_{\alpha\beta}\int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_{\vecp}}\left(e^{i\vecp.(\vecx-\vecy)} -e^{-i\vecp.(\vecx-\vecy)}  \right) \\
+        & + [\mathcal{I}_4\delta^{(3)(\vecx-\vecy)}]_{\alpha\beta}=\delta_{\alpha\beta}\delta^{(3)(\vecx-\vecy)}.\quad \blacksquare
+    \end{split}
+\end{equation}
+In the last expression we used the fact that going to a coordinate system s.t. $\vecp \to -\vecp$ flips the sign of the integral, but this is a Lorentz invariant integral, hence it should be 0.\\
+Important subtlety:
+\begin{equation}
+    \begin{split}
+        \partial_i e^{i\pdotx} = \frac{\partial}{\partial x^j}e^{ip^jx^j}=ip^ie^{i\pdotx}=-ip_ie^{i\pdotx}
+    \end{split}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{7.}
+\begin{equation}
+    \begin{split}
+        H &= \int d^3x \, \bar{\psi}(-i\gamma^i\partial_i+m)\psi(\vecx)=\int d^3x\frac{d^3q}{(2\pi)^3}\frac{1}{\sqrt{2E_{\vecq}}} \, \bar{\psi}(-i\gamma^i\partial_i+m)\\
+        &  \sum_{s=1}^2 \left(b^s_{\vecq}u^s(\vecq)e^{i\qdotx}+(c^s_{\vecq} )^\dagger v^s(\vecq)e^{-i\qdotx}\right)=\int d^3x\frac{d^3q}{(2\pi)^3}\frac{1}{\sqrt{2E_{\vecq}}} \, \bar{\psi}\\
+        & \sum_{s=1}^2\left(b^s_{\vecq}(-\gamma^iq_i+m)u^s(\vecq)e^{i\qdotx}+ (c^s_{\vecq} )^\dagger (\gamma^iq_i+m)v^s(\vecq)e^{-i\qdotx}\right)
+    \end{split}
+\end{equation}
+From the Dirac equation:
+\begin{equation}
+    \begin{split}
+        (\slashp - m)u(\vecp) = 0 \implies \gamma^0E_p\, u(\vecp)= (-\gamma^ip_i+m)u(\vecp)
+    \end{split}
+\end{equation}
+and similarly:
+\begin{equation}
+    \begin{split}
+        (\slashp + m)v(\vecp) = 0 \implies  -\gamma^0E_p\, v(\vecp)= (\gamma^ip_i+m)v(\vecp)
+    \end{split}
+\end{equation}
+therefore:
+\begin{equation}
+    \begin{split}
+        H &= \int d^3x\frac{d^3q}{(2\pi)^3}\sqrt{\frac{E_{\vecq}}{2}} \, \psi^\dagger (\gamma^0)^2 \sum_s\left(b^s_{\vecq}u^s(\vecq)e^{i\qdotx}-(c^s_{\vecq} )^\dagger v^s(\vecq)e^{-i\qdotx} \right)\\
+        &= \int \frac{d^3p\, d^3q}{(2\pi)^6}\sqrt{\frac{E_{\vecq}}{E_{\vecp}}}\frac{d^3x}{2}\sum_{r,s=1}^2\left((b^r_{\vecp})^\dagger(u^r(\vecp))^\dagger e^{-i\pdotx}+c_{\vecp}^r (v^r(\vecp))^\dagger e^{i\pdotx}\right)\\
+        & \left( b^s_{\vecq}u^s(\vecq)e^{i\qdotx}-(c^s_{\vecq} )^\dagger v^s(\vecq)e^{-i\qdotx}\right) =\int \frac{d^3p\, d^3q}{(2\pi)^3}\sqrt{\frac{E_{\vecq}}{E_{\vecp}}}\frac{1}{2}\sum_{r,s=1}^2 \\
+        & \left( (b^r_{\vecp})^\dagger b^s_{\vecq}(u^r(\vecp))^\dagger u^s(\vecq) \delta(\vecp-\vecq) + c_{\vecp}^rb^s_{\vecq} (v^r(\vecp))^\dagger u^s(\vecq) \delta(\vecp+\vecq) \right. \\
+        & \left. -(b^r_{\vecp})^\dagger (c^s_{\vecq} )^\dagger (u^r(\vecp))^\dagger v^s(\vecq) \delta(\vecp+\vecq) - c_{\vecp}^r (c^s_{\vecq} )^\dagger (v^r(\vecp))^\dagger v^s(\vecq)\delta(\vecp-\vecq)\right) \\ 
+        & =\int \frac{d^3p}{(2\pi)^3}\frac{1}{2}\sum_{r,s=1}^2 \left( 2E_{\vecp}(b^r_{\vecp})^\dagger b^s_{\vecp} \delta^{rs} - 2E_{\vecp} c_{\vecp}^r (c^s_{\vecp})^\dagger  \delta^{rs}  \right) \\
+        & = \int \frac{d^3p}{(2\pi)^3} E_{\vecp}\sum_{s=1}^2\left( (b^r_{\vecp})^\dagger b^s_{\vecp} +(c^s_{\vecp})^\dagger c_{\vecp}^r  \right). \quad \blacksquare
+    \end{split}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{8.}
+Given Eq. (17) from the Q's file, we can prove Eq. (18) from the Q's file, by replacing $\{\}$ anti-commutator with $[]$ commutator and do nothing else. So that one is trivial. In Q.7's solution above, we used the fermionic anti-commutator only in the last step, if instead we use the bosonic commutator, we do not get the minus sign and hence:
+\begin{equation}
+    \begin{split}
+        H &= \int \frac{d^3p}{(2\pi)^3} E_{\vecp}\sum_{s=1}^2\left( (b^r_{\vecp})^\dagger b^s_{\vecp} -(c^s_{\vecp})^\dagger c_{\vecp}^r  \right). \quad \blacksquare
+    \end{split}
+\end{equation}
+Which means we can lower the energy indefinitely by having infinitely many c-particles.
+\end{document}
